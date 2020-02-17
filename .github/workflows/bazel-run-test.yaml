@@ -12,6 +12,6 @@ jobs:
       - name: add bazel repository
         run: echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
       - name: update repo and install bazel
-        run: apt update && sudo apt install bazel
+        run: sudo apt update && sudo apt install bazel
       - name: run bazel test
         run:  bazel test --output_user_root=/tmp/output_build ...
