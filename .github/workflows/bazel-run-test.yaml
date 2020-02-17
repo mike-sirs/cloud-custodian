@@ -3,23 +3,23 @@ name: Run test
 on: [push]
 
 jobs:
-  build:
+  deploy:
     name: Run bazel test
     runs-on: ubuntu-18.04
+
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: show current WD
-        with:
-          repository: mike-sirs/cloud-custodian
         run: |
           pwd
           ls -lah ../
           ls -lah ../../
           sudo find / -name tox.ini
-      - name: apt-key add bazel 
-        run: curl https://bazel.build/bazel-release.pub.gpg | sudo apt-key add -
-      - name: add bazel repository
-        run: echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
-      - name: update repo and install bazel
-        run: sudo apt update && sudo apt install bazel
+      - name: Install bazel 
+        run: |
+          curl https://bazel.build/bazel-release.pub.gpg | sudo apt-key add -
+          echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
+          sudo apt update && sudo apt install bazel
       - name: run bazel test
         run:  bazel test --output_user_root=/tmp/output_build ...
