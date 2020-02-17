@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - name: show current WD
-        run: pwd && la -lah
+        run: pwd && ls -lah
       - name: apt-key add bazel 
         run: curl https://bazel.build/bazel-release.pub.gpg | sudo apt-key add -
       - name: add bazel repository
