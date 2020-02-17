@@ -7,8 +7,15 @@ jobs:
     name: Run bazel test
     runs-on: ubuntu-18.04
     steps:
+      - name: Build site assets
+        working-directory: ${{ github.workspace }}
+        run: ls -la
       - name: show current WD
-        run: pwd && ls -lah ../ && ls -lah ../../
+        run: |
+          pwd
+          ls -lah ../
+          ls -lah ../../
+          sudo find / -name tox.ini
       - name: apt-key add bazel 
         run: curl https://bazel.build/bazel-release.pub.gpg | sudo apt-key add -
       - name: add bazel repository
