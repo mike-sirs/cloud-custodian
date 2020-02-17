@@ -2,7 +2,6 @@ name: buildtool
 
 on:
   pull_request:
-  push:
 
 jobs:
   goreleaser:
@@ -15,5 +14,5 @@ jobs:
         name: Run build-tools build command
         uses: buildtool/build-action@v1
         with:
-#          dockerfile: Docker-bazel-base-img
-          docker-build-args: '-f Docker-bazel-base-img -skiplogin'
+          dockerfile: Docker-bazel-base-img
+          docker-build-args: '-skiplogin'
