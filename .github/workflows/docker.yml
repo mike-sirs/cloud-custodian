@@ -16,4 +16,4 @@ jobs:
         uses: buildtool/build-action@v1
         with:
 #          dockerfile: Docker-bazel-base-img
-          docker-build-args: '-f Docker-bazel-base-img -t my-baz .'
+          docker-build-args: '-f Docker-bazel-base-img -skiplogin'
