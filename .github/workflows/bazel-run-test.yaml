@@ -18,4 +18,4 @@ jobs:
       - name: run bazel test
         run: |
           touch WORKSPACE
-          bazel --output_user_root=/tmp/output_build test ./
+          bazel --output_user_root=/tmp/output_build test :all
