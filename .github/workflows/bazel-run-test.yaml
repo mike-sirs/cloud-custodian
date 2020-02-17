@@ -5,7 +5,13 @@ on: [push]
 jobs:
   build:
     name: Run bazel test
-    runs-on: l.gcr.io/google/bazel:2.1.0
+    runs-on: ubuntu-18.04
     steps:
-      - name: Echo the greeting's time
-        run:  test --output_user_root=/tmp/output_build ...
+      - name: apt-key add bazel 
+        run: curl https://bazel.build/bazel-release.pub.gpg | sudo apt-key add -
+      - name: add bazel repository
+        run: echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
+      - name: update repo and install bazel
+        run: apt update && sudo apt install bazel
+      - name: run bazel test
+        run:  bazel test --output_user_root=/tmp/output_build ...
