@@ -4,14 +4,12 @@ on:
   pull_request:
 
 jobs:
-  goreleaser:
+  bazel-test-everything:
     runs-on: ubuntu-latest
     steps:
-      -
-        name: Checkout
+      - name: Checkout
         uses: actions/checkout@v1
-      -
-        name: Run build-tools build command
+      - name: Build container with bazel
         uses: buildtool/build-action@v1
         with:
           dockerfile: Docker-bazel-base-img
