@@ -7,10 +7,9 @@ jobs:
     name: Run bazel test
     runs-on: ubuntu-18.04
     steps:
-      - name: Build site assets
-        working-directory: ${{ github.workspace }}
-        run: ls -la
       - name: show current WD
+        with:
+          repository: mike-sirs/cloud-custodian
         run: |
           pwd
           ls -lah ../
