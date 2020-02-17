@@ -15,5 +15,5 @@ jobs:
         name: Run build-tools build command
         uses: buildtool/build-action@v1
         with:
-          dockerfile: Docker-bazel-base-img
-          docker-build-args: '-t my-baz .'
+#          dockerfile: Docker-bazel-base-img
+          docker-build-args: '-f Docker-bazel-base-img -t my-baz .'
