@@ -1,0 +1,19 @@
+name: buildtool
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  goreleaser:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v1
+      -
+        name: Run build-tools build command
+        uses: buildtool/build-action@v1
+        with:
+          dockerfile: Docker-bazel-base-img
+          docker-build-args: '-t my-baz .'
